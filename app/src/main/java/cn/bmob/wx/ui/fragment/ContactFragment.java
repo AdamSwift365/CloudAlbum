@@ -77,7 +77,7 @@ public class ContactFragment extends ParentWithNaviFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_conversation, container, false);
+        rootView = inflater.inflate(R.layout.fragment_contact, container, false);
         initNaviView();
         ButterKnife.bind(this, rootView);
         IMutlipleItem<Friend> mutlipleItem = new IMutlipleItem<Friend>() {

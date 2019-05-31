@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/base_bg"
-    android:orientation="vertical" >
+              android:id="@+id/ll_root"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/base_bg"
+              android:orientation="vertical" >
 
     <include
       android:id="@+id/ll"
@@ -11,31 +12,36 @@
       layout="@layout/include_navi"/>
 
      <GridLayout
+         android:paddingTop="15dp"
          android:layout_width="fill_parent"
          android:layout_height="fill_parent"
          android:columnCount="2"
          android:rowCount="5"
          android:orientation="horizontal">
 
-         <ImageView
-             android:layout_width="210sp"
-             android:scaleType="fitCenter"
-             android:background="@drawable/splash"
-             android:layout_height="373sp"
+         <cn.bmob.wx.ui.view.CircleImageView
+             android:layout_gravity="center_horizontal"
+             android:layout_width="180dp"
+             android:layout_height="180dp"
+             android:layout_centerInParent="true"
+             android:src="@drawable/p1"
+
              />
 
-         <ImageView
-             android:layout_width="210sp"
-             android:scaleType="fitCenter"
-             android:background="@drawable/splash"
-             android:layout_height="373sp"
+         <cn.bmob.wx.ui.view.CircleImageView
+             android:layout_gravity="center_horizontal"
+             android:layout_width="180dp"
+             android:layout_height="180dp"
+             android:layout_centerInParent="true"
+             android:src="@drawable/p2"
              />
 
-         <ImageView
-             android:layout_width="210sp"
-             android:scaleType="fitCenter"
-             android:background="@drawable/splash"
-             android:layout_height="373sp"
+         <cn.bmob.wx.ui.view.CircleImageView
+             android:layout_width="180dp"
+             android:layout_gravity="center_horizontal"
+             android:layout_height="180dp"
+             android:layout_centerInParent="true"
+             android:src="@drawable/p3"
              />
 
 
