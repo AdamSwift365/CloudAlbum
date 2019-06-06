@@ -70,6 +70,7 @@ public class ContactFragment extends ParentWithNaviFragment {
 
             @Override
             public void clickRight() {
+
                 startActivity(SearchUserActivity.class, null);
             }
         };

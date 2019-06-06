@@ -9,7 +9,9 @@ import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
 import cn.bmob.imdemo.R;
+import cn.bmob.wx.base.ParentWithNaviActivity;
 import cn.bmob.wx.base.ParentWithNaviFragment;
+import cn.bmob.wx.ui.Allalbum;
 
 public class AlbumFragment extends ParentWithNaviFragment {
 
@@ -32,6 +34,29 @@ public class AlbumFragment extends ParentWithNaviFragment {
     public Object right() {
         return R.drawable.base_action_bar_add_bg_selector;
     }
+
+
+
+
+    @Override
+    public ParentWithNaviActivity.ToolBarListener setToolBarListener() {
+        return new ParentWithNaviActivity.ToolBarListener() {
+            @Override
+            public void clickLeft() {
+                startActivity(Allalbum.class, null);
+
+            }
+
+            @Override
+            public void clickRight() {
+               // startActivity(Allalbum.class, null);
+              //  startActivity(PhotoActivity.class, null);
+
+            }
+        };
+    }
+
+
 
     @Nullable
     @Override

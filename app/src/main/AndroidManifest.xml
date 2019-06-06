@@ -122,6 +122,10 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
 
 
+        <activity android:name="cn.bmob.wx.ui.SingleViewActivity"/>
+
+        <activity android:name="cn.bmob.wx.ui.Allalbum"/>
+
         <activity
             android:name="com.tencent.tauth.AuthActivity"
             android:launchMode="singleTask"
