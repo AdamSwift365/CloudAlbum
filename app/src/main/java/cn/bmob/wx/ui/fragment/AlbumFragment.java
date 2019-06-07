@@ -15,7 +15,7 @@ import butterknife.ButterKnife;
 import cn.bmob.imdemo.R;
 import cn.bmob.wx.base.ParentWithNaviActivity;
 import cn.bmob.wx.base.ParentWithNaviFragment;
-import cn.bmob.wx.ui.Allalbum;
+import cn.bmob.wx.ui.AllAlbumActivity;
 import cn.bmob.wx.ui.ChatActivity;
 import cn.bmob.wx.util.PhotoUtils;
 
@@ -49,13 +49,13 @@ public class AlbumFragment extends ParentWithNaviFragment {
         return new ParentWithNaviActivity.ToolBarListener() {
             @Override
             public void clickLeft() {
-                startActivity(Allalbum.class, null);
+                startActivity(AllAlbumActivity.class, null);
 
             }
 
             @Override
             public void clickRight() {
-               // startActivity(Allalbum.class, null);
+               // startActivity(AllAlbumActivity.class, null);
               //  startActivity(PhotoActivity.class, null);
                 //选择图片
                 //图片点击。打开图库选择图片

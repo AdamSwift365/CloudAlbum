@@ -124,7 +124,7 @@
 
         <activity android:name="cn.bmob.wx.ui.SingleViewActivity"/>
 
-        <activity android:name="cn.bmob.wx.ui.Allalbum"/>
+        <activity android:name="cn.bmob.wx.ui.AllAlbumActivity"/>
 
         <activity
             android:name="com.tencent.tauth.AuthActivity"
