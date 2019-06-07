@@ -14,7 +14,7 @@ import cn.bmob.wx.base.BaseActivity;
  * Created by wx on 2019/6/6.
  */
 
-public class Allalbum extends BaseActivity {
+public class AllAlbumActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

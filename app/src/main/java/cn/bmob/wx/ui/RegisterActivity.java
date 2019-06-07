@@ -17,7 +17,7 @@ import cn.bmob.wx.model.UserModel;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.LogInListener;
 
-public class RegisterActivity extends ParentWithNaviActivity {
+public class    RegisterActivity extends ParentWithNaviActivity {
 
     @Bind(R.id.et_username)
     EditText et_username;

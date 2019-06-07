@@ -16,4 +16,5 @@ public class BlackListActivity extends BaseActivity {
         setContentView(R.layout.activity_blacklist2);
 
     }
+
 }
