@@ -5,20 +5,19 @@ import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import butterknife.ButterKnife;
 import cn.bmob.imdemo.R;
 import cn.bmob.wx.base.ParentWithNaviActivity;
 import cn.bmob.wx.base.ParentWithNaviFragment;
 import cn.bmob.wx.ui.AllAlbumActivity;
+import cn.bmob.wx.ui.view.CircleImageView;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -96,7 +95,7 @@ public class AlbumFragment extends ParentWithNaviFragment {
           String picturePath = cursor.getString(columnIndex);
            cursor.close();
             //将图片显示到界面上
-           ImageView imageView = (ImageView) getActivity().findViewById(R.id.imgView);
+           CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView);
             imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
             }
 
