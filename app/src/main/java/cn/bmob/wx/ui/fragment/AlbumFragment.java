@@ -97,6 +97,7 @@ public class AlbumFragment extends ParentWithNaviFragment {
             //将图片显示到界面上
            CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView);
             imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+
             }
 
          }

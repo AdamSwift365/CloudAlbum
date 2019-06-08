@@ -54,8 +54,7 @@ public int getCount()
 
     }
 
-    public Integer[] mThumbIds={R.drawable.m1,R.drawable.m2,R.drawable.m3,R.drawable.m4,R.drawable.m5,
-            R.drawable.m6,R.drawable.m7,R.drawable.m8,R.drawable.m9};
+    public Integer[] mThumbIds={R.drawable.p1,R.drawable.p2,R.drawable.p3};
 
 
 
