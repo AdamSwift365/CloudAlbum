@@ -81,68 +81,67 @@ public class AlbumFragment extends ParentWithNaviFragment {
     }
 
     @Override
-    public void  onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-                if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
 
-//获取返回的数据，这里是android自定义的Uri地址
+            //获取返回的数据，这里是android自定义的Uri地址
             Uri selectedImage = data.getData();
-            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+            String[] filePathColumn = {MediaStore.Images.Media.DATA};
             //获取选择照片的数据视图
-         Cursor cursor = getActivity().getContentResolver().query(selectedImage, filePathColumn, null, null, null);
-       cursor.moveToFirst();
+            Cursor cursor = getActivity().getContentResolver().query(selectedImage, filePathColumn, null, null, null);
+            cursor.moveToFirst();
             //从数据视图中获取已选择图片的路径
             int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-          String picturePath = cursor.getString(columnIndex);
-           cursor.close();
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
             //将图片显示到界面上
-                  if(count==0) {
-                      CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView);
-                      imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-                      count++;
-                  }else if(count==1) {
-                        CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView1);
-                        imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-                        count++;
-                    } else if(count==2) {
-                        CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView2);
-                        imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-                        count++;
-                    }else if(count==3) {
-                      CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView3);
-                      imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-                      count++;
-                  }else if(count==4) {
-                      CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView4);
-                      imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-                      count++;
-                  }else if(count==5) {
-                      CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView5);
-                      imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-                      count++;
-                  }else if(count==6) {
-                      CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView6);
-                      imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-                      count++;
-                  }else if(count==7) {
-                      CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView7);
-                      imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-                      count++;
-                  }else if(count==8) {
-                      CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView8);
-                      imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-                      count++;
-                  }else if(count==9) {
-                      CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView9);
-                      imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-                      count++;
-                  }
-
-
-
+            if (count == 0) {
+                CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView);
+                imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+                count++;
+            } else if (count == 1) {
+                CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView1);
+                imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+                count++;
+            } else if (count == 2) {
+                CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView2);
+                imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+                count++;
+            } else if (count == 3) {
+                CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView3);
+                imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+                count++;
+            } else if (count == 4) {
+                CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView4);
+                imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+                count++;
+            } else if (count == 5) {
+                CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView5);
+                imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+                count++;
+            } else if (count == 6) {
+                CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView6);
+                imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+                count++;
+            } else if (count == 7) {
+                CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView7);
+                imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+                count++;
+            } else if (count == 8) {
+                CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView8);
+                imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+                count++;
+            } else if (count == 9) {
+                CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView9);
+                imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+                count++;
             }
 
-         }
+
+        }
+
+    }
 
 
     @Nullable
@@ -157,8 +156,6 @@ public class AlbumFragment extends ParentWithNaviFragment {
 
         return rootView;
     }
-
-
 
 
 }
