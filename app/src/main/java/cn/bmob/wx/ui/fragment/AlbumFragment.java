@@ -24,6 +24,7 @@ import static android.app.Activity.RESULT_OK;
 
 public class AlbumFragment extends ParentWithNaviFragment {
 
+    public int count=0;
 
     private static int RESULT_LOAD_IMAGE = 1;
 
@@ -95,8 +96,49 @@ public class AlbumFragment extends ParentWithNaviFragment {
           String picturePath = cursor.getString(columnIndex);
            cursor.close();
             //将图片显示到界面上
-           CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView);
-            imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+                  if(count==0) {
+                      CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView);
+                      imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+                      count++;
+                  }else if(count==1) {
+                        CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView1);
+                        imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+                        count++;
+                    } else if(count==2) {
+                        CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView2);
+                        imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+                        count++;
+                    }else if(count==3) {
+                      CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView3);
+                      imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+                      count++;
+                  }else if(count==4) {
+                      CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView4);
+                      imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+                      count++;
+                  }else if(count==5) {
+                      CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView5);
+                      imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+                      count++;
+                  }else if(count==6) {
+                      CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView6);
+                      imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+                      count++;
+                  }else if(count==7) {
+                      CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView7);
+                      imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+                      count++;
+                  }else if(count==8) {
+                      CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView8);
+                      imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+                      count++;
+                  }else if(count==9) {
+                      CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView9);
+                      imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+                      count++;
+                  }
+
+
 
             }
 
