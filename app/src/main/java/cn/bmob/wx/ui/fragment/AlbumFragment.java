@@ -5,12 +5,16 @@ import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import butterknife.ButterKnife;
 import cn.bmob.imdemo.R;
@@ -19,16 +23,46 @@ import cn.bmob.wx.base.ParentWithNaviFragment;
 import cn.bmob.wx.ui.AllAlbumActivity;
 import cn.bmob.wx.ui.view.CircleImageView;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+
+import com.megvii.cloud.http.CommonOperate;
+import com.megvii.cloud.http.Response;
+
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
+
 import static android.app.Activity.RESULT_OK;
+import static java.lang.Double.*;
 
 
 public class AlbumFragment extends ParentWithNaviFragment {
 
-    public int count=0;
+    private static final String TAG = "AlbumFragment";
+
+    public int size = 0;
 
     private static int RESULT_LOAD_IMAGE = 1;
 
     LinearLayoutManager layoutManager;
+
+    byte[][] fileBytes = new byte[10][];
+
+
+    // 人脸识别
+
+    static String apiKey = "F8f5JClgy6gGSa0CsHu2AVFORveGJwlb";//api_key
+    static String apiSecret = "WbnPImebUcgZZIcKBCgG4_MB-TfyPjHR";//api_secret
+    //private final static int i = 100;
+
+
 
     @Override
     protected String title() {
@@ -80,6 +114,8 @@ public class AlbumFragment extends ParentWithNaviFragment {
         };
     }
 
+
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -93,8 +129,45 @@ public class AlbumFragment extends ParentWithNaviFragment {
             cursor.moveToFirst();
             //从数据视图中获取已选择图片的路径
             int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            String picturePath = cursor.getString(columnIndex);
+            final String picturePath = cursor.getString(columnIndex);
             cursor.close();
+
+
+            // face++
+            Log.i(TAG, "picPath: " + picturePath);
+
+
+//            byte[] fileByte1 = getBytesFromFile(new File("/storage/emulated/0/DCIM/QQ20190609-1.jpg"));
+//            byte[] fileByte2 = getBytesFromFile(new File("/storage/emulated/0/Download/QQ20190609-0.jpg"));
+
+
+//            FaceThread ft = new FaceThread(fileByte1, fileByte1);
+//            ft.start();
+//            Log.i(TAG, "compareRes: " + ft.getRes());
+
+//            new Thread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    Log.i(TAG, "run() called");
+//                    CommonOperate commonOperate = new CommonOperate(apiKey, apiSecret, false);
+//                    try{
+//                        Response compare = commonOperate.compare(null, null, fileByte1, null,
+//                                null, null, fileByte2, null);
+//                        String result = new String(compare.getContent());
+//                        Log.i(TAG, "res: " + result);
+//                        JSONObject jsonObject = new JSONObject(result);
+//                        double confidence = valueOf(jsonObject.getString("confidence"));
+//                        Log.i(TAG, "confidence: " + confidence);
+//
+//
+//                    }catch (Exception e){
+//                        Log.i(TAG, "startCompare: " +e.toString());
+//                    }
+//                }
+//            }).start();
+
+            int count = getCount(picturePath);
+
             //将图片显示到界面上
             if (count == 0) {
                 CircleImageView imageView = (CircleImageView) getActivity().findViewById(R.id.imgView);
@@ -157,5 +230,59 @@ public class AlbumFragment extends ParentWithNaviFragment {
         return rootView;
     }
 
+    /**
+     * Function:
+     *      获取图片的二进制文件
+     *
+     */
+    public static byte[] getBytesFromFile(File f) {
+        if (f == null) {
+            return null;
+        }
+        try {
+            FileInputStream stream = new FileInputStream(f);
+            ByteArrayOutputStream out = new ByteArrayOutputStream(1000);
+            byte[] b = new byte[1000];
+            int n;
+            while ((n = stream.read(b)) != -1)
+                out.write(b, 0, n);
+            stream.close();
+            out.close();
+            return out.toByteArray();
+        } catch (IOException e) {
+
+        }
+        return null;
+    }
+
+
+    public int getCount(String filePath) {
+        int count = 0;
+        byte[] fileByte = getBytesFromFile(new File(filePath));
+
+        if (size == 0) {
+            fileBytes[size] = fileByte;
+            size++;
+            return count;
+        }
+
+        for (int i = 0; i < size; i++) {
+            FaceThread ft = new FaceThread(fileBytes[0], fileByte);
+            ft.start();
+            if (ft.getRes() == true) {
+                count = i;
+                return count;
+            } else {
+                count++;
+            }
+
+        }
+        return count;
+
+    }
+
 
 }
+
+
+
