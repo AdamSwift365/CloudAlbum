@@ -167,6 +167,7 @@ public class AlbumFragment extends ParentWithNaviFragment {
 //            }).start();
 
             int count = getCount(picturePath);
+            Log.i(TAG, "size: " + size + "   count: " + count);
 
             //将图片显示到界面上
             if (count == 0) {
@@ -267,16 +268,17 @@ public class AlbumFragment extends ParentWithNaviFragment {
         }
 
         for (int i = 0; i < size; i++) {
-            FaceThread ft = new FaceThread(fileBytes[0], fileByte);
+            FaceThread ft = new FaceThread(fileBytes[i], fileByte);
             ft.start();
             if (ft.getRes() == true) {
-                count = i;
+                count = -1;
                 return count;
-            } else {
-                count++;
             }
-
         }
+
+        size++;
+        count = size - 1;
+        fileBytes[size - 1] = fileByte;
         return count;
 
     }
